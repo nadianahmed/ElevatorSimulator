@@ -10,11 +10,11 @@ As the simulator is still under development, usage instructions will be determin
 
 ## Examples
 
-Examples of how to use the Elevator Simulator will be provided once the development is complete. The examples will include scenarios such as controlling the elevators to transport passengers between floors, managing elevator traffic during peak hours, and optimizing elevator routes to reduce waiting times for passengers.
+Examples of how to use the Elevator Simulator will be provided once the development is complete.
 
 ## Contribution Guidelines
 
-The contribution guidelines are still under development, but will include instructions on how other developers can contribute to the project. This may include reporting issues, submitting pull requests, or contributing code.
+The contribution guidelines are still under development, but will include instructions on how other developers can contribute to the project.
 
 ## License
 
