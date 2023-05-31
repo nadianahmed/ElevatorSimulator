@@ -14,15 +14,17 @@ import components.Direction;
 import components.Event;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Floor implements Runnable {
 
     private Scheduler scheduler;
     private ArrayList<Event> events;
+    private Queue<Event> eventQueue;
     private int floorNum;
 
     public Floor() {
+        this.events = new ArrayList<Event>();
     }
 
     public Floor(int floorNum, Scheduler scheduler) {
@@ -31,6 +33,10 @@ public class Floor implements Runnable {
         this.events = new ArrayList<Event>();
     }
 
+    /**
+     * Reads events from input.csv file
+     * @throws FileNotFoundException
+     */
     public void readInput() throws FileNotFoundException {
         String line = "";
         String[] row = null;
@@ -43,16 +49,31 @@ public class Floor implements Runnable {
             // read each row of data
             while( (line = br.readLine()) != null) {
                 row = line.split(",");
-                for (String cell : row) {
-                    System.out.println(cell);
-                }
-                Event event = new Event(row[0], 1,
-                        Direction.getDirection(row[2]), 1);
-//                events.add(event);
-                event.printEvent();
+
+                System.out.println(Arrays.toString(row));
+
+                String timestamp = row[0];
+                int floorNum = Integer.parseInt(row[1]);
+                Direction direction = Direction.getDirection(row[2]);
+                int carButton = Integer.parseInt(row[3]);
+
+                Event event = new Event(timestamp, floorNum,
+                                        direction, carButton);
+
+                events.add(event);
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void printFloorEvents() {
+        if (events != null) {
+            for (Event event : events) {
+                event.printEvent();
+            }
+        } else {
+            System.out.println(Thread. currentThread(). getName() + ": No Events.");
         }
     }
 
@@ -63,6 +84,7 @@ public class Floor implements Runnable {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+        printFloorEvents();
 
     }
 

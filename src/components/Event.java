@@ -20,9 +20,9 @@ public class Event {
     }
 
     public void printEvent() {
-        System.out.print(timestamp + " ");
-        System.out.print(floorNum + " ");
-        System.out.print(direction + " ");
-        System.out.println(carButton);
+        System.out.print("Time: " + timestamp);
+        System.out.print(" | Floor: " + floorNum);
+        System.out.print(" | Direction: " + direction + " ");
+        System.out.println(" | Car Button: " +carButton);
     }
 }
